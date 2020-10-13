@@ -11,25 +11,25 @@
     <div>
 		<form id='fquestion' name='fquestion' action='AddQuestion.php'>
 			<label id="lmail">Email*: </label>
-			<input type="text" id="mail"><br>
+			<input type="text" id="mail" name="mail"><br>
 			<label id='lenunciado'>Enunciado de la pregunta:* </label>
-			<input type="text" id="enunciado"><br>
+			<input type="text" id="enunciado" name="enunciado"><br>
 			<label id='lcorrecta'>Respuesta correcta*: </label>
-			<input type="text" id="correcta"><br>
+			<input type="text" id="correcta" name="correcta"><br>
 			<label id='linco1'>Respuesta incorrecta 1*: </label>
-			<input type="text" id="inco1"><br>
+			<input type="text" id="inco1" name="inco1"><br>
 			<label id='linco2'>Respuesta incorrecta 2*: </label>
-			<input type="text" id="inco2"><br>
+			<input type="text" id="inco2" name="inco2"><br>
 			<label id='linco3'>Respuesta incorrecta 3*: </label>
-			<input type="text" id="inco3"><br>
+			<input type="text" id="inco3" name="inco3"><br>
 			<label id='lcomplejidad'>Complejidad*: </label>
-			<select id="complejidad">
+			<select id="complejidad" name="complejidad">
 					<option value="1">Baja</option>
 					<option value="2">Media</option>
 					<option value="3">Alta</option>
 			</select> <br>
 			<label id='ltema'>Tema*: </label>
-			<input type="text" id="tema"><br>
+			<input type="text" id="tema" name="tema"><br><br>
 		</form>
 		<input type="button" value="Enviar pregunta" onclick="validar()"><br><br>
 		<label id="resul"></label>

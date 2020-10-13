@@ -14,7 +14,17 @@ function validar() {
             comp = parseInt(complejidad);
             if (1 <= comp && comp <= 3) {
                 if (enunciado.length >= 10) {
-                    $('form').submit();
+                    if ($('#archivosubido').length) {
+                        var aux = $('#archivosubido');
+                        if (!aux.val()) {
+                            $('#resul').text("Faltan datos");
+                            aux.css("color", "red");
+                        } else {
+                            $('form').submit();
+                        }
+                    } else {
+                        $('form').submit();
+                    }
                 } else {
                     $('#resul').text("Pregunta inferior a 10 caracteres");
                     var aux = $('#lenunciado');
@@ -37,13 +47,19 @@ function validar() {
 
 function verificarMail(Mail) {
     var regexAlumno = /[a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es))/;
-    var regexProf1 = /[a-zA-Z]*(.)[a-zA-Z]*(@ehu.)((eus)|(es))/;
+    var regexProf1 = /[a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es))/;
     var regexProf2 = /[a-zA-Z]*(@ehu.)((eus)|(es))/;
     return regexAlumno.test(Mail) || regexProf1.test(Mail) || regexProf2.test(Mail);
 }
 
-function limpia() {
+function verificarHTML5() {
+    var mail = $('#mail').val();
+    if (verificarMail(mail))
+        $('form').submit();
+}
 
+function limpia() {
+    $('#resul').text("");
     var aux = $('#lmail');
     aux.css("color", "black");
     aux = $('#lenunciado');
@@ -58,6 +74,10 @@ function limpia() {
     aux.css("color", "black");
     aux = $('#ltema')
     aux.css("color", "black");
+    if ($('#archivosubido')) {
+        var aux = $('#archivosubido');
+        aux.css("color", "black");
+    }
 }
 
 function vacia(mail, enunciado, correcta, inco1, inco2, inco3, tema) {
@@ -89,4 +109,11 @@ function vacia(mail, enunciado, correcta, inco1, inco2, inco3, tema) {
         var aux = $('#ltema');
         aux.css("color", "red");
     }
+    if ($('#archivosubido')) {
+        var aux = $('#archivosubido');
+        if (!aux.val()) {
+            aux.css("color", "red");
+        }
+    }
 }
+

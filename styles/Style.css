@@ -14,3 +14,9 @@ nav span             				{ margin: 0px 10px 0px 0px;
 						display: inline-block;}
 
 #ErrorMsgs          		 { color: #f61; font-size: smaler}
+#preview {
+	width: auto;
+	max-width: 900px;
+	height: auto;
+	max-height: 260px;
+}
