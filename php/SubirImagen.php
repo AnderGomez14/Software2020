@@ -4,7 +4,6 @@ function subir($FILES, $target_dir, $id)
     $tipo = strtolower(pathinfo(basename($FILES["archivosubido"]["name"]), PATHINFO_EXTENSION));
     $target_file = $target_dir . $id . "." . $tipo;
 
-    // Check if image file is a actual image or fake image
     $check = getimagesize($FILES["archivosubido"]["tmp_name"]);
     if (!($check !== false)) {
         echo "El archivo no es una imagen.";
@@ -12,7 +11,6 @@ function subir($FILES, $target_dir, $id)
         return false;
     }
 
-    // Allow certain file formats
     if (
         $tipo != "jpg" && $tipo != "png" && $tipo != "jpeg"
         && $tipo != "gif"
