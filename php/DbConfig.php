@@ -11,5 +11,5 @@ if ($local == 1) {
     $user = "id14877493_mikelander";
     $pass = "r=U/(_J5kUgJP4x)";
     $basededatos = "id14877493_quiz";
-    $target_dir = "/xampp/htdocs/MikelGarcia-AnderGomez/uploads/";
+    $target_dir = "/storage/ssd2/493/14877493/public_html/MikelGarcia-AnderGomez/uploads/";
 }

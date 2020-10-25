@@ -3,8 +3,11 @@ function preview() {
     if (archivo) {
         var lector = new FileReader();
         lector.onload = function () {
-            $("#preview").attr("src", lector.result);
+            var img = $('<img id="preview">'); //Equivalent: $(document.createElement('img'))
+            img.attr('src', lector.result);
+            img.appendTo('#formDiv');
         }
         lector.readAsDataURL(archivo);
     }
+
 }
