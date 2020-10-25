@@ -1,7 +1,7 @@
 function validar() {
     limpia();
     var mail = $('#mail').val();
-    var enunciado = $('#enunciado').val();
+    var enunciado = $('#enum').val();
     var correcta = $('#correcta').val();
     var inco1 = $('#inco1').val();
     var inco2 = $('#inco2').val();
@@ -20,10 +20,10 @@ function validar() {
                             $('#resul').text("Faltan datos");
                             aux.css("color", "red");
                         } else {
-                            $('form').submit();
+                            return true;
                         }
                     } else {
-                        $('form').submit();
+                        return true;
                     }
                 } else {
                     $('#resul').text("Pregunta inferior a 10 caracteres");
@@ -43,19 +43,14 @@ function validar() {
         vacia(mail, enunciado, correcta, inco1, inco2, inco3, tema);
 
     }
+    return false;
 }
 
 function verificarMail(Mail) {
     var regexAlumno = /[a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es))/;
     var regexProf1 = /[a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es))/;
-    var regexProf2 = /[a-zA-Z]*(@ehu.)((eus)|(es))/;
+    var regexProf2 = /[a-zA-Z]+(@ehu.)((eus)|(es))/;
     return regexAlumno.test(Mail) || regexProf1.test(Mail) || regexProf2.test(Mail);
-}
-
-function verificarHTML5() {
-    var mail = $('#mail').val();
-    if (verificarMail(mail))
-        $('form').submit();
 }
 
 function limpia() {
