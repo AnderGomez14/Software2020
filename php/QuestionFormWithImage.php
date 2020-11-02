@@ -11,6 +11,7 @@
 <body>
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
+		<?php if (!isset($_GET['email'])) die('Pagina restringida solo para usuarios'); ?>
 		<div id="formDiv">
 			<form id='fquestion' enctype="multipart/form-data" name='fquestion' method="POST" action='AddQuestionWithImage.php<?php if (isset($_GET['email'])) echo '?email=' . $_GET['email'] . ''; ?>'>
 				<table id="tform" style="margin: 0px auto">

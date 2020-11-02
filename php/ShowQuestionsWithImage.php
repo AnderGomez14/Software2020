@@ -10,6 +10,7 @@
   <section class="main" id="s1">
     <div>
       <?php
+      if (!isset($_GET['email'])) die('Pagina restringida solo para usuarios');
       include 'DbConfig.php';
       $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
       if (!$mysqli) {
@@ -26,7 +27,7 @@
         echo '<tr><td>' . htmlspecialchars($row['mail']) . '</td> <td>' . htmlspecialchars($row['enum']) .
           '</td> <td>' . htmlspecialchars($row['correcta']) . '</td> <td>' . htmlspecialchars($row['inco1']) . '</td> <td>' .
           htmlspecialchars($row['inco2']) . '</td> <td>' . htmlspecialchars($row['inco3']) . '</td> <td>' . htmlspecialchars($row['complejidad']) .
-          '</td> <td>' . htmlspecialchars($row['tema']) . '</td> <td> <img src="' . $dir . $row['id'] . "." . $row['foto'] . '" style="max-width:300px;width:100%"></img> </td> </tr>';
+          '</td> <td>' . htmlspecialchars($row['tema']) . '</td> <td> <img src="' . $dir . $row['id'] . "." . $row['foto'] . '" style="max-height:300px;height:auto;max-width:300px;width:auto"></img> </td> </tr>';
       }
       echo '</table>';
       ?>
