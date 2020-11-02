@@ -12,7 +12,7 @@
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
 		<div id="formDiv">
-			<form id='fquestion' enctype="multipart/form-data" name='fquestion' method="POST" action='AddQuestionWithImage.php' onsubmit="return validar()">
+			<form id='fquestion' enctype="multipart/form-data" name='fquestion' method="POST" action='AddQuestionWithImage.php'>
 				<table style="margin: 0px auto">
 					<tr>
 						<td align="left"><label id="lmail">Email*: </label></td>

@@ -7,7 +7,6 @@ function subir($FILES, $target_dir, $id)
     $check = getimagesize($FILES["archivosubido"]["tmp_name"]);
     if (!($check !== false)) {
         echo "El archivo no es una imagen.";
-        echo '<br> <img src="https://pbs.twimg.com/media/ETXT7KYXgAATG5I.jpg" style="max-width:300px;width:100%"></img> <br>';
         return false;
     }
 
@@ -16,7 +15,6 @@ function subir($FILES, $target_dir, $id)
         && $tipo != "gif"
     ) {
         echo "Lo siento, pero el archivo no tiene un formato admitido. F";
-        echo '<br> <img src="https://pbs.twimg.com/media/ETXT7KYXgAATG5I.jpg" style="max-width:300px;width:100%"></img> <br>';
         return false;
     }
 
@@ -24,7 +22,6 @@ function subir($FILES, $target_dir, $id)
         return true;
     } else {
         echo 'Algo raro ha ido mal.';
-        echo '<br> <img src="https://pbs.twimg.com/media/ETXT7KYXgAATG5I.jpg" style="max-width:300px;width:100%"></img> <br>';
         return false;
     }
 }

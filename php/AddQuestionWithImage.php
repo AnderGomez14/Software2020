@@ -19,7 +19,7 @@
         echo ('MAL');
         die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
       }
-      if (!(isset($_POST['mail']) && isset($_POST['enum']) && isset($_POST['correcta']) && isset($_POST['inco1']) && isset($_POST['inco2']) && isset($_POST['inco3']) && isset($_POST['complejidad']) && isset($_POST['tema']))) {
+      if (empty($_POST['mail']) || empty($_POST['enum']) || empty($_POST['correcta']) || empty($_POST['inco1']) || empty($_POST['inco2']) || empty($_POST['inco3']) || empty($_POST['complejidad']) || empty($_POST['tema'])) {
         echo ('Error: Faltan parametros');
         echo '<br> <img src="https://pbs.twimg.com/media/ETXT7KYXgAATG5I.jpg" style="max-width:300px;width:100%"></img> <br>';
       } else if (!(preg_match("/([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+(@ehu.)((eus)|(es)))/", $_POST['mail']) && strlen($_POST['enum']) >= 10 && $_POST['complejidad'] >= 1 && $_POST['complejidad'] <= 3)) {

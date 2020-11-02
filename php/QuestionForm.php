@@ -11,7 +11,7 @@
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
 		<div>
-			<form id='fquestion' name='fquestion' action='AddQuestion.php' onsubmit="return validar()">
+			<form id='fquestion' name='fquestion' action='AddQuestion.php'>
 				<table style="margin: 0px auto">
 					<tr>
 						<td align="left"><label id="lmail">Email*: </label></td>
