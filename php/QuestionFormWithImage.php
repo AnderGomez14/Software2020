@@ -12,11 +12,11 @@
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
 		<div id="formDiv">
-			<form id='fquestion' enctype="multipart/form-data" name='fquestion' method="POST" action='AddQuestionWithImage.php'>
-				<table style="margin: 0px auto">
-					<tr>
+			<form id='fquestion' enctype="multipart/form-data" name='fquestion' method="POST" action='AddQuestionWithImage.php<?php if (isset($_GET['email'])) echo '?email=' . $_GET['email'] . ''; ?>'>
+				<table id="tform" style="margin: 0px auto">
+					<tr hidden>
 						<td align="left"><label id="lmail">Email*: </label></td>
-						<td><input type="text" id="mail" name="mail"></td>
+						<td><input type="text" id="mail" name="mail" value="<?php echo $_GET['email']; ?>"></td>
 					</tr>
 					<tr>
 						<td align="left"><label id='lenunciado'>Enunciado de la pregunta:* </label></td>
@@ -50,8 +50,12 @@
 						<td align="left"><label id='ltema'>Tema*: </label></td>
 						<td><input type="text" id="tema" name="tema"></td>
 					</tr>
+					<tr>
+						<td align="left"><label id="lfile">Avatar: </label></td>
+						<td><input type="file" id="archivosubido" name="archivosubido" accept="image/*" onchange="preview()"></td>
+					</tr>
 				</table>
-				<input type="file" id="archivosubido" name="archivosubido" accept="image/*" onchange="preview()"><br><br>
+				<br>
 				<input type="submit" value="Enviar pregunta"><br><br>
 			</form>
 			<label id="resul"></label><br>

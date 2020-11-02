@@ -20,3 +20,14 @@ nav span             				{ margin: 0px 10px 0px 0px;
 	height: auto;
 	max-height: 210px;
 }
+#tform{
+	  border-radius: 25px;
+	  background: #4CAF50;
+	  padding: 20px;
+}
+#tshow {
+	border-radius: 25px;
+	background: #c2b616;
+	padding: 20px;
+
+}

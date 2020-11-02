@@ -8,18 +8,18 @@
 </head>
 
 <body>
-    <?php include '../php/Menus2.php' ?>
+    <?php include '../php/Menus.php' ?>
     <section class="main" id="s1">
         <form id='login' name='flogin' method="POST" action='LogIn.php'>
             <div>
-                <table style="margin: 0px auto">
+                <table id="tform" style="margin: 0px auto">
                     <tr>
                         <td align="left"><label id="luser">Email*: </label></td>
                         <td><input type="text" id="user" name="user"></td>
                     </tr>
                     <tr>
                         <td align="left"><label id="lpassword">Contraseña*: </label></td>
-                        <td><input type="text" id="password" name="password"></td>
+                        <td><input type="password" id="password" name="password"></td>
                     </tr>
                 </table>
 
@@ -38,16 +38,24 @@
                     echo ('MAL');
                     die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
                 }
-                $query = $mysqli->prepare("SELECT * FROM users WHERE password = ?");
-                $query->bind_param("s", $_POST['password']);
+                $query = $mysqli->prepare("SELECT password FROM users WHERE email = ?");
+                $query->bind_param("s", $_POST['user']);
                 if ($query->execute()) {
-                    $count = $query->num_rows;
-                    printf("Result set has %d rows.\n", $count);
-                    if ($query->num_rows == 0)
-                        echo 'nice try';
-                    else
-                        echo 'Logeo correcto';
+                    $result = $query->get_result();
+                    if ($result->num_rows === 0)
+                        echo 'Inicio de sesion incorrecto';
+                    else {
+                        $pass = $result->fetch_array();
+                        $salt = $_POST['user'] . "#Vadillo007STONKS";
+                        if (hash_equals($pass[0], crypt($_POST['password'], $salt))) {
+                            $mail = $_POST['user'];
+                            echo "<script>alert('Inicio de sesion correcto.'); location.href='layout.php?email=$mail'; </script>";
+                            exit;
+                        }
+                        echo 'Inicio de sesion incorrecto';
+                    }
                 }
+                mysqli_close($mysqli);
             }
         }
         ?>

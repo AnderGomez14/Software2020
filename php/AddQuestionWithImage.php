@@ -40,7 +40,11 @@
         }
         echo 'Todo bien';
         echo '<br> <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/499/826/2f0.png" style="max-width:300px;width:100%"></img> <br>';
-        echo "<p><a href='ShowQuestionsWithImage.php'> Ver Preguntas</a>";
+
+        if (isset($_GET['email']))
+          echo '<p><a href="ShowQuestionsWithImage.php?email=' . $_GET['email'] . '"> Ver Preguntas</a>';
+        else
+          echo "<p><a href='ShowQuestionsWithImage.php'> Ver Preguntas</a>";
       }
       mysqli_close($mysqli);
       ?>
