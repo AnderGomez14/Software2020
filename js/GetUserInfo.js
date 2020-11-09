@@ -15,5 +15,8 @@ function informacion() {
             $('#telefono').text($(listaUsers[i]).find('telefono').text());
         }
     }
+}
 
+function limpiar(){
+    $('#respuesta').hide();
 }

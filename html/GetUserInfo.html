@@ -1,12 +1,18 @@
+<style>
+    div{
+       border: double; border-color: red blue green black;
+       width: 15%;
+    }
+</style>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"> </script>   
 <script type="text/javascript" src="../js/GetUserInfo.js"> </script>
 <h2>Introduzca el email del cual desea recibir la informacion</h2>
-<p>Email: <input type="text" id="mail" size="40"></p>
+<p>Email: <input type="text" id="mail" size="40" onclick="limpiar()"></p>
 <p>
     <input type="button" value="Enviar" onclick="informacion()">
 </p>
 <div id="respuesta" style="display: none">
-<p>Nombre: <label id="nombre"></label></p>
-<p>Apellidos: <label id="apellidos"></label></p>
-<p>Telefono: <label id="telefono"></label></p>
+<p><strong><u>Nombre:</u></strong> <label id="nombre"></label></p>
+<p><strong><u>Apellidos:</u></strong> <label id="apellidos"></label></p>
+<p><strong><u>Telefono:</u></strong> <label id="telefono"></label></p>
 </div>
