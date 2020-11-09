@@ -45,7 +45,7 @@
 
         $assessmentItem->addAttribute('subject', $_POST['tema']);
         $assessmentItem->addAttribute('author', $_POST['mail']);
-        //$assessmentItem->addAttribute('photo', "../uploads/" . $id . "." . $tipo);
+        //$assessmentItem->addAttribute('photo', "../uploads/" . $id . "." . $tipo); Esto esta por si hay que añadir tambien la ruta a la imagen
 
 
         $itemBody = $assessmentItem->addChild('itemBody');

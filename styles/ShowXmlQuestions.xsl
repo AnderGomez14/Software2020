@@ -5,7 +5,7 @@
         <html>
             <body>
                 <h2>Preguntas</h2>
-                <table border="1">
+                <table border="2">
                     <tr bgcolor="#9acd32">
                         <th>Autor</th>
                         <th>Enunciado</th>
