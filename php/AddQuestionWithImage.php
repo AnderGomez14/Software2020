@@ -40,7 +40,32 @@
         }
         echo 'Todo bien';
         echo '<br> <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/499/826/2f0.png" style="max-width:300px;width:100%"></img> <br>';
+        $xml = simplexml_load_file("../xml/Questions.xml");
+        $assessmentItem = $xml->addChild('assessmentItem');
 
+        $assessmentItem->addAttribute('subject', $_POST['tema']);
+        $assessmentItem->addAttribute('author', $_POST['mail']);
+        //$assessmentItem->addAttribute('photo', "../uploads/" . $id . "." . $tipo);
+
+
+        $itemBody = $assessmentItem->addChild('itemBody');
+        $itemBody->addChild('p', $_POST['enum']);
+
+        $correctResponse = $assessmentItem->addChild('correctResponse');
+        $correctResponse->addChild('response', $_POST['correcta']);
+
+        $incorrectResponses = $assessmentItem->addChild('incorrectResponses');
+        $incorrectResponses->addChild('response', $_POST['inco1']);
+        $incorrectResponses->addChild('response', $_POST['inco2']);
+        $incorrectResponses->addChild('response', $_POST['inco3']);
+
+        $xmlDocument = new DOMDocument('1.0');
+        $xmlDocument->preserveWhiteSpace = false;
+        $xmlDocument->formatOutput = true;
+        $xmlDocument->loadXML($xml->asXML());
+
+        if ($xmlDocument->save('../xml/Questions.xml'))
+          die('Esto es embarazoso, pero no se ha podido guardar el XML');
         if (isset($_GET['email']))
           echo '<p><a href="ShowQuestionsWithImage.php?email=' . $_GET['email'] . '"> Ver Preguntas</a>';
         else
