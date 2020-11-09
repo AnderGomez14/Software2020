@@ -93,7 +93,7 @@
                             die();
                         }
                     }
-                    echo '<script>alert("Usuario creado satisfactoriamente.");window.location.href = "login.php";</script>';
+                    echo '<script>alert("Usuario creado satisfactoriamente.");window.location.href = "LogIn.php";</script>';
                 }
             }
             ?>

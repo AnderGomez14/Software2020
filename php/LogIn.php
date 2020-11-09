@@ -49,7 +49,7 @@
                         $salt = $_POST['user'] . "#Vadillo007STONKS";
                         if (hash_equals($pass[0], crypt($_POST['password'], $salt))) {
                             $mail = $_POST['user'];
-                            echo "<script>alert('Inicio de sesion correcto.'); location.href='layout.php?email=$mail'; </script>";
+                            echo "<script>alert('Inicio de sesion correcto.'); location.href='Layout.php?email=$mail'; </script>";
                             exit;
                         }
                         echo 'Inicio de sesion incorrecto';
