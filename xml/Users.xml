@@ -20,12 +20,19 @@
 		<apellido1>Santos</apellido1>
 		<apellido2>Lopez de Aguilera</apellido2>
 		<telefono>634232325</telefono>
-    </usuario>
-     <usuario>
-        <email>xalonso001@ikasle.ehu.eus</email>
+	</usuario>
+	<usuario>
+		<email>xalonso001@ikasle.ehu.eus</email>
 		<nombre>Xabier</nombre>
 		<apellido1>Alonso</apellido1>
 		<apellido2>Mouriño</apellido2>
 		<telefono>696756463</telefono>
-      </usuario>
+	</usuario>
+	<usuario>
+		<email>iwilliams009@ikasle.ehu.eus</email>
+		<nombre>Iñaki</nombre>
+		<apellido1>Williams</apellido1>
+		<apellido2>Athletic</apellido2>
+		<telefono>613191983</telefono>
+	</usuario>
 </usuarios>
