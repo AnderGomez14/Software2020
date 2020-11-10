@@ -64,7 +64,7 @@
         $xmlDocument->formatOutput = true;
         $xmlDocument->loadXML($xml->asXML());
 
-        if ($xmlDocument->save('../xml/Questions.xml'))
+        if (!$xmlDocument->save('../xml/Questions.xml'))
           die('Esto es embarazoso, pero no se ha podido guardar el XML');
         if (isset($_GET['email']))
           echo '<p><a href="ShowQuestionsWithImage.php?email=' . $_GET['email'] . '"> Ver Preguntas</a>';

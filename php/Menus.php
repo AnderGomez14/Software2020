@@ -2,9 +2,9 @@
   <header class='main' id='h1'>
     <?php
     if (!isset($_GET['email'])) {
-      echo '<span class="right"><a href="register.php">Registro</a></span>
+      echo '<span class="right"><a href="Register.php">Registro</a></span>
     <span class="right"><a href="LogIn.php">Login</a></span>
-    <span class="right" style="display:none;"><a href="/logout">Logout</a></span>';
+    <span class="right" style="display:none;"><a href="/logout.php">Logout</a></span>';
       echo ' Anonimo <img src="../uploads/anon.jpg" style="max-width:40px;width:100%;max-height:40px;height:100%"></img>';
     } else {
       include 'DbConfig.php';

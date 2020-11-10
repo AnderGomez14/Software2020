@@ -63,8 +63,8 @@
                     echo ('Error: La contraseña ha de ser de minimo 6 caracteres');
                 } else if ($_POST['password'] != $_POST['password2']) {
                     echo ('Error: Las contraseñas no coinciden');
-                } else if (!preg_match("/([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+(@ehu.)((eus)|(es)))/", $_POST['email'])) {
-                    echo ('Error: Email incorrecto');
+                } else if (!((preg_match("/([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))/", $_POST['email']) && $_POST['tipo'] == 'A') || (preg_match("/([a-zA-Z]+(@ehu.)((eus)|(es)))/", $_POST['email']) && $_POST['tipo'] == 'P'))) {
+                    echo ('Error: Email incorrecto para el tipo de usuario indicado');
                 } else {
                     $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
                     if (!$mysqli) {
