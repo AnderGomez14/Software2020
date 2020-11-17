@@ -1,6 +1,6 @@
 window.setInterval(function () {
     liveCounters();
-}, 2000);
+}, 10000);
 
 function liveCounters() {
     $.ajax({
@@ -11,9 +11,9 @@ function liveCounters() {
         success: function (response) {
             var newData = JSON.stringify(response)
             var data = JSON.parse(newData);
-            
-            $('#nQuestions').html(data.questions);
-            $('#nUsers').html(data.users);
+
+            $('#nQuestions').html(data.nUsersQuestions + "/" + data.nQuestions);
+            $('#nUsers').html(data.nUsers);
         }
     });
 }

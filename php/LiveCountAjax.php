@@ -10,23 +10,21 @@ $mysqli->set_charset('utf8');
 
 if (!isset($_POST['email'])) die('ERROR: Bad request F');
 $query = $mysqli->query("SELECT id FROM preguntas_imagen WHERE mail= '" . $_POST['email'] . "'");
-$totalQuestionsNumber = $query->num_rows;
 $userQuestionsNumber = $query->num_rows;
 $query->close();
 $query = $mysqli->query("SELECT id FROM preguntas_imagen");
 $totalQuestionsNumber = $query->num_rows;
-mysqli_error($mysqli);
-$nquestions =  'User: ' . $userQuestionsNumber . '; Total: ' .  $totalQuestionsNumber;
 
 $fecha = time();
 $query = $mysqli->query("UPDATE users SET last_visit = " . $fecha . " WHERE email = '" . $_POST['email'] . "'");
-$threshold = $fecha - 5;
+$threshold = $fecha - 12; //Pongo 2s mas por seguridad
 $query = $mysqli->query('SELECT * FROM users WHERE last_visit>' . $threshold);
 $totalUsers = $query->num_rows;
 
 $json = new stdClass;
-$json->questions = $nquestions;
-$json->users = $totalUsers;
+$json->nUsersQuestions = $userQuestionsNumber;
+$json->nQuestions = $totalQuestionsNumber;
+$json->nUsers = $totalUsers;
 
 header('Content-Type: application/json');
 echo json_encode($json);

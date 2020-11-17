@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <?php include '../php/Menus.php' ?>
+    <?php include '../php/Menus.php';
+    if (!isset($_GET['email'])) die('Pagina restringida solo para usuarios'); ?>
     <section class="main" id="s1">
         <div id="liveCount">Usarios actualmente editando la base de datos: <div id="nUsers">
             </div>
@@ -24,7 +25,7 @@
                 <table id="tform" style="margin: 0px auto">
                     <tr hidden>
                         <td align="left"><label id="lmail">Email*: </label></td>
-                        <td><input type="text" id="mail" name="mail" value="<?php echo $_GET['email'];?>"></td>
+                        <td><input type="text" id="mail" name="mail" value="<?php echo $_GET['email']; ?>"></td>
                     </tr>
                     <tr>
                         <td align="left"><label id='lenunciado'>Enunciado de la pregunta:* </label></td>
@@ -75,6 +76,9 @@
         <div id="verPreguntas"></div>
     </section>
     <?php include '../html/Footer.html' ?>
+    <script>
+        liveCounters();
+    </script>
 </body>
 
 </html>
