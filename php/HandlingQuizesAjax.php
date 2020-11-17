@@ -7,17 +7,24 @@
     <script src="../js/ShowImageInForm.js"></script>
     <script src="../js/ShowQuestionAjax.js"></script>
     <script src="../js/AddQuestionAjax.js"></script>
+    <script src="../js/LiveAjax.js"></script>
 </head>
 
 <body>
     <?php include '../php/Menus.php' ?>
     <section class="main" id="s1">
+        <div id="liveCount">Usarios actualmente editando la base de datos: <div id="nUsers">
+            </div>
+        </div>
+        <div id="liveQuestions">Preguntas actualmente en la DB: <div id="nQuestions">
+            </div>
+        </div>
         <div id="formDiv">
             <form id='fquestion'>
                 <table id="tform" style="margin: 0px auto">
                     <tr hidden>
                         <td align="left"><label id="lmail">Email*: </label></td>
-                        <td><input type="text" id="mail" name="mail" value="<?php echo $_GET['email']; ?>"></td>
+                        <td><input type="text" id="mail" name="mail" value="<?php echo $_GET['email'];?>"></td>
                     </tr>
                     <tr>
                         <td align="left"><label id='lenunciado'>Enunciado de la pregunta:* </label></td>

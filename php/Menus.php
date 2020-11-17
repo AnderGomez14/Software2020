@@ -38,9 +38,7 @@
     <?php
     if (isset($_GET['email']))
       echo "    <span><a href='Layout.php?email=" . $mail . "'>Inicio</a></span>
-    <span><a href='QuestionFormWithImage.php?email=" . $mail . "'> Insertar Pregunta</a></span>
-    <span><a href=' ShowQuestionsWithImage.php?email=" . $mail . "'> Ver Preguntas</a></span>
-    <span><a href='ShowXmlQuestions.php?email=" . $mail . "'>Ver Preguntas XML</a></span>
+    <span><a href=' HandlingQuizesAjax.php?email=" . $mail . "'>Gestionar Preguntas</a></span>
     <span><a href='Credits.php?email=" . $mail . "'>Creditos</a></span>";
     else echo "    <span><a href='Layout.php'>Inicio</a></span>
     <span><a href='Credits.php'>Creditos</a></span>"
