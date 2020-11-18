@@ -46,7 +46,7 @@
                     </tr>
                 </table>
                 <br>
-                <input type="submit" value="Enviar pregunta"><br><br>
+                <input type="submit" value="Registrarse"><br><br>
             </form>
             <?php
             include 'DbConfig.php';
