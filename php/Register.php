@@ -5,6 +5,7 @@
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/ValidateFieldsQuestion.js"></script>
     <script src="../js/ShowImageInForm.js"></script>
+    <script src="../js/ClienteVIP.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,8 @@
                     </tr>
                     <tr>
                         <td align="left"><label id="lemail">Email*: </label></td>
-                        <td><input type="text" id="email" name="email"></td>
+                        <td><input type="text" id="email" name="email" onblur="esVIP(this.value)"></td>
+                        <td><label id="VIP" name="VIP"></label>
                     </tr>
                     <tr>
                         <td align="left"><label id="lname">Nombre y Apellidos*: </label></td>
