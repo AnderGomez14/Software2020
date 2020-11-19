@@ -1,9 +1,9 @@
 <?php
-
+error_reporting(0);
 require_once('../lib/nusoap.php');
 require_once('../lib/class.wsdlcache.php');
 
-$ns = "http://localhost/AnderAdmin/contrasena";
+$ns = "http://localhost/mikelgarcia-andergomez/php/VerifyPassWS.php";
 $server = new soap_server();
 $server->configureWSDL('pass', $ns);
 $server->wsdl->schemaTargetNamespace = $ns;
