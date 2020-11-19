@@ -6,6 +6,7 @@
     <script src="../js/ValidateFieldsQuestion.js"></script>
     <script src="../js/ShowImageInForm.js"></script>
     <script src="../js/ClienteVIP.js"></script>
+    <script src="../js/ContrasenaValid.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,8 @@
                     </tr>
                     <tr>
                         <td align="left"><label id="lpassword">Contraseña*: </label></td>
-                        <td><input type="password" id="password" name="password"></td>
+                        <td><input type="password" id="password" name="password" onblur="passValid(this.value)"></td>
+                        <td><label id="PASS" name="PASS"></label>
                     </tr>
                     <tr>
                         <td align="left"><label id="lpassword2">Repetir Contraseña*: </label></td>
