@@ -8,17 +8,22 @@ $server = new soap_server();
 $server->configureWSDL('pass', $ns);
 $server->wsdl->schemaTargetNamespace = $ns;
 
-$server->register('pass', array('x' => 'xsd:string'), array('z' => 'xsd:string'), $ns);
-function pass($contrasena)
+$server->register('pass', array('x' => 'xsd:string', 'y' => 'xsd:int'), array('z' => 'xsd:string'), $ns);
+function pass($contrasena, $codigo)
 {
-    $comprobador = file_get_contents("../txt/toppasswords.txt");
-    $pos = strpos($comprobador, $contrasena);
-    if ($pos === false) {
+    if ($codigo == 1010) {
+        if (empty($contrasena)) return 'NO';
+        $comprobador = file_get_contents("../txt/toppasswords.txt");
+        $pos = strpos($comprobador, $contrasena);
+        if ($pos === false) {
+            return 'SI';
+        } else {
+            return 'NO';
+        }
         return 'SI';
     } else {
-        return 'NO';
+        return 'COD';
     }
-    return 'SI';
 }
 
 if (!isset($HTTP_RAW_POST_DATA)) $HTTP_RAW_POST_DATA = file_get_contents("php://input");

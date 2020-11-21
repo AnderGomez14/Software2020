@@ -2,14 +2,16 @@ ContraValid = new XMLHttpRequest();
 ContraValid.onreadystatechange = function () {
     if (ContraValid.readyState == 4) {
         var obj = document.getElementById('PASS');
-        alert(ContraValid.responseText);
         if(ContraValid.responseText == 'SI'){
             obj.style.color = 'yellow';
             obj.innerHTML = 'Contraseña Valida';
-        } else {
+        } else if (ContraValid.responseText == 'NO'){
             obj.style.color = 'red';
             obj.innerHTML = 'Contraseña Invalida';
-        }     
+        } else {
+            obj.style.color = 'brown';
+            obj.innerHTML = 'Sin Servicio';
+        }
     }
 }
 function passValid(contrasena) {

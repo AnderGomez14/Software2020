@@ -7,6 +7,16 @@
     <script src="../js/ShowImageInForm.js"></script>
     <script src="../js/ClienteVIP.js"></script>
     <script src="../js/ContrasenaValid.js"></script>
+    <script>
+        function poderRegistrarse() {
+            if (($('#VIP').text() == 'El usuario es VIP') && ($('#PASS').text() == 'Contraseña Valida')) {
+                $('#Registrarse').prop('disabled', false);
+            }
+        }
+
+        setInterval(poderRegistrarse, 1000);
+    </script>
+
 </head>
 
 <body>
@@ -44,13 +54,14 @@
                     </tr>
                     <tr>
                         <td align="left">
-                            <label">* Campo obligatorio </label>
+                            <label>* Campo obligatorio </label>
                         </td>
 
                     </tr>
                 </table>
                 <br>
-                <input type="submit" value="Registrarse"><br><br>
+                <input type="reset" value="Limpiar">
+                <input type="submit" id='Registrarse' name='Registrarse' value="Registrarse" disabled='true'><br><br>
             </form>
             <?php
             include 'DbConfig.php';
