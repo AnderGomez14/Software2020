@@ -2,7 +2,7 @@
 function subir($FILES, $target_dir, $id)
 {
     $tipo = strtolower(pathinfo(basename($FILES["archivosubido"]["name"]), PATHINFO_EXTENSION));
-    $target_file = $target_dir . $id . "." . $tipo;
+    $target_file = $target_dir . 'uploads/' . $id . "." . $tipo;
 
     $check = getimagesize($FILES["archivosubido"]["tmp_name"]);
     if (!($check !== false)) {
