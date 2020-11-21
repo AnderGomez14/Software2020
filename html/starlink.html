@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <script src="../js/og-0.5.2.js"></script>
+    <link rel="stylesheet" href="../css/og-0.5.2.css">
+</head>
+
+<body>
+    <div id="globus"></div><br>
+    <div id="JSON"></div>
+
+    <script>
+        var osm = new og.layer.XYZ("OpenStreetMap", {
+            isBaseLayer: true,
+            url: "//b.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            visibility: true,
+        });
+
+        var globus = new og.Globe({
+            'atmosphere': false,
+            "target": "globus",
+            "name": "Earth",
+            "layers": [osm],
+            'controls': [
+                new og.control.MouseNavigation({
+                    autoActivate: true
+                }),
+                new og.control.KeyboardNavigation({
+                    autoActivate: true
+                }),
+                new og.control.EarthCoordinates({
+                    autoActivate: true,
+                    center: false
+                }),
+                new og.control.ZoomControl({
+                    autoActivate: true
+                }),
+                new og.control.TouchNavigation({
+                    autoActivate: true
+                }),
+                new og.control.Sun({
+                    autoActivate: true
+                })
+            ],
+            "autoActivated": true
+        });
+
+        var xmlhttp = new XMLHttpRequest();
+        var url = "../php/getStarlinkJSON.php";
+        var starlink;
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                starlink = JSON.parse(this.responseText);
+                addStarlinkJSON();
+            }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+        function addStarlinkJSON() {
+            var out = 0;
+            for (var i = 0; i < starlink.sats.length; i++) {
+                new og.layer.Vector("Markers", {
+                        clampToGround: true
+                    })
+                    .addTo(globus.planet)
+                    .add(new og.Entity({
+                        lonlat: [starlink.sats[i].lng2, starlink.sats[i].lat2],
+                        billboard: {
+                            src: "../images/starlink.png",
+                            width: 64,
+                            height: 64,
+                        }
+                    }));
+            }
+        }
+    </script>
+</body>
+
+</html>

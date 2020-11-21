@@ -1,5 +1,9 @@
 <?php
 include 'DbConfig.php';
+if (!isset($_POST['email'])) die('ERROR: Bad request F');
+$xml = simplexml_load_file("../xml/Questions.xml");
+if (!$xml) die('Error al cargar el XML');
+
 $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
 if (!$mysqli) {
     echo ('MAL');
@@ -8,12 +12,13 @@ if (!$mysqli) {
 
 $mysqli->set_charset('utf8');
 
-if (!isset($_POST['email'])) die('ERROR: Bad request F');
-$query = $mysqli->query("SELECT id FROM preguntas_imagen WHERE mail= '" . $_POST['email'] . "'");
-$userQuestionsNumber = $query->num_rows;
-$query->close();
-$query = $mysqli->query("SELECT id FROM preguntas_imagen");
-$totalQuestionsNumber = $query->num_rows;
+$totalQuestionsNumber = $xml->count();
+$count = 0;
+foreach ($xml->children() as $pregunta) {
+    if ($pregunta->attributes()->author == $_POST['email']) $count += 1;
+}
+$userQuestionsNumber = $count;
+
 
 $fecha = time();
 $query = $mysqli->query("UPDATE users SET last_visit = " . $fecha . " WHERE email = '" . $_POST['email'] . "'");
