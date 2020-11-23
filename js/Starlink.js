@@ -60,18 +60,14 @@ var client = document.getElementById("coordClient").innerHTML.split(",")
 L.marker([client[0], client[1]], {
     icon: clientIcon
 }).addTo(map)
-    .bindPopup('Usuario')
-    .openPopup();
-
+    .bindPopup('Usuario');
 
 L.marker([server[0], server[1]], {
     icon: serverIcon
 }).addTo(map)
-    .bindPopup('Servidor')
-    .openPopup();
+    .bindPopup('Servidor');
 var closeSatsClient = "";
 var closeSatsServer = "";
-var closeSatsServerArray = new Array;
 
 document.getElementById("starlinkdiv").hidden = true;
 
@@ -83,33 +79,43 @@ function addSats() {
 
     for (var i = 0; i < starlink.sats.length; i++) {
         if (starlink.sats[i].lat2 !== 0 && starlink.sats[i].lng2 !== 0) {
-            L.marker([starlink.sats[i].lat2, starlink.sats[i].lng2], {
+            var calculatedPosition = calcularPosicion(starlink.sats[i]);
+            var lat = calculatedPosition[0];
+            var lng = calculatedPosition[1];
+            var radio = 500;
+            var color = 'blue';
+
+
+            if (starlink.sats[i].periapsis > 547)
+                numeroSatsOrbita += 1;
+            else {
+                numeroSatsOrbitaF += 1;
+                var radio = 500 * (starlink.sats[i].periapsis / 550);
+                var color = 'red';
+            }
+
+            L.marker([lat, lng], {
                 icon: satIcon
             }).addTo(map)
-                .bindPopup(starlink.sats[i].name)
-                .openPopup();
-            L.circle([starlink.sats[i].lat2, starlink.sats[i].lng2], {
-                color: 'red',
+                .bindPopup("Nombre: " + starlink.sats[i].name + "<br>Altura: " + starlink.sats[i].periapsis + "km");
+            L.circle([lat, lng], {
+                color: color,
                 opacity: 0.3,
-                fillColor: '#f03',
+                fillColor: color,
                 fillOpacity: 0.1,
-                radius: 600000
+                radius: radio * 1000
             }).addTo(map);
 
-            if (starlink.sats[i].lat2 > (parseFloat('-10.0') + parseFloat(client[0])) && starlink.sats[i].lat2 < (parseFloat('10.0') + parseFloat(client[0])) && starlink.sats[i].lng2 > (parseFloat('-10.0') + parseFloat(client[1])) && starlink.sats[i].lng2 < (parseFloat('10.0') + parseFloat(client[1]))) {
-                if (distanciaEntreCoord(parseFloat(starlink.sats[i].lat2), parseFloat(starlink.sats[i].lng2), parseFloat(client[0]), parseFloat(client[1])) < 600)
+            if (lat > (parseFloat('-10.0') + parseFloat(client[0])) && lat < (parseFloat('10.0') + parseFloat(client[0])) && lng > (parseFloat('-10.0') + parseFloat(client[1])) && lng < (parseFloat('10.0') + parseFloat(client[1]))) {
+                if (distanciaEntreCoord(parseFloat(lat), parseFloat(lng), parseFloat(client[0]), parseFloat(client[1])) < radio)
                     closeSatsClient += starlink.sats[i].name + ", ";
             }
 
-            if (starlink.sats[i].lat2 > (parseFloat('-10.0') + parseFloat(server[0])) && starlink.sats[i].lat2 < (parseFloat('10.0') + parseFloat(server[0])) && starlink.sats[i].lng2 > (parseFloat('-10.0') + parseFloat(server[1])) && starlink.sats[i].lng2 < (parseFloat('10.0') + parseFloat(server[1]))) {
-                closeSatsServerArray.push(i);
-                if (distanciaEntreCoord(parseFloat(starlink.sats[i].lat2), parseFloat(starlink.sats[i].lng2), parseFloat(server[0]), parseFloat(server[1])) < 600)
+            if (lat > (parseFloat('-10.0') + parseFloat(server[0])) && lat < (parseFloat('10.0') + parseFloat(server[0])) && lng > (parseFloat('-10.0') + parseFloat(server[1])) && lng < (parseFloat('10.0') + parseFloat(server[1]))) {
+                if (distanciaEntreCoord(parseFloat(lat), parseFloat(lng), parseFloat(server[0]), parseFloat(server[1])) < radio)
                     closeSatsServer += starlink.sats[i].name + ", ";
             }
-            if (starlink.sats[i].periapsis < 555 && starlink.sats[i].periapsis > 545)
-                numeroSatsOrbita += 1;
-            else
-                numeroSatsOrbitaF += 1;
+
         }
     }
     var table = document.getElementById("ipTable");
@@ -136,8 +142,27 @@ function addSats() {
     document.getElementById("cargando").hidden = true;
     document.getElementById("starlinkdiv").hidden = false;
 
-
-
-
 }
-    //globus.planet.viewExtentArr([5.54, 45.141, 5.93, 45.23]);
+function calcularPosicion(sat) {
+    //Funcion para calcular la posicion actual del satelite
+    var now = new Date();
+    var alive = (now / 1000 - starlink.stamp) - 1;
+    var dist = (alive * 7000);
+    var lat, lng;
+
+    var Geodesic = GeographicLib.Geodesic,
+        DMS = GeographicLib.DMS,
+        geod = Geodesic.WGS84;
+
+    var l = geod.InverseLine(sat.lat, sat.lng, sat.lat2, sat.lng2),
+        n = Math.ceil(l.s13 / dist), i, s;
+    s = Math.min(dist, l.s13);
+    var r = l.Position(s, Geodesic.STANDARD | Geodesic.LONG_UNROLL);
+    lat = r.lat2.toFixed(5);
+    lng = r.lon2.toFixed(5);
+
+
+
+
+    return new Array(lat, lng);
+}

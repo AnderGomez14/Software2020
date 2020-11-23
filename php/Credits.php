@@ -4,6 +4,7 @@
 <head>
   <link rel="stylesheet" href="../styles/leaflet.css" />
   <script src="../js/leaflet.js"></script>
+  <script type="text/javascript" src="https://geographiclib.sourceforge.io/scripts/geographiclib.js"></script>
   <?php include '../html/Head.html' ?>
 </head>
 
@@ -43,7 +44,7 @@
       echo '<div id="coordServer" hidden>' . $servidor->loc . '</div>';
 
       ?><br>
-      <div id="cargando"><img src="https://media1.tenor.com/images/5b2c095b85cb27efb58642bd892a260a/tenor.gif?itemid=11007718"></img></div>
+      <div id="cargando"><img src="https://thumbs.gfycat.com/TemptingOptimisticAlbacoretuna-size_restricted.gif"></img></div>
       <div id="starlinkdiv">
         <h>ESTADISTICAS STARLINK </h><br>
         <p>Numero de satelites en orbita: <p id="numeroSatsOrbita">
