@@ -9,9 +9,9 @@ if ($local == 1) {
     $url = "http://localhost/";
 } else {
     $server = "localhost";
-    $user = "id14877493_mikelander";
-    $pass = "r=U/(_J5kUgJP4x)";
-    $basededatos = "id14877493_quiz";
-    $target_dir = "/storage/ssd2/493/14877493/public_html/MikelGarcia-AnderGomez/";
-    $url = "https://andergomez.000webhostapp.com/";
+    $user = "id15505880_miusuario";
+    $pass = "KTYT%HAB6X3ZFp]w";
+    $basededatos = "id15505880_dbquiz";
+    $target_dir = "/storage/ssd5/880/15505880/public_html/MikelGarcia-AnderGomez/";
+    $url = "https://andergo14.000webhostapp.com/";
 }

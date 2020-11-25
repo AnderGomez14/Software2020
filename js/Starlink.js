@@ -161,8 +161,5 @@ function calcularPosicion(sat) {
     lat = r.lat2.toFixed(5);
     lng = r.lon2.toFixed(5);
 
-
-
-
     return new Array(lat, lng);
 }
