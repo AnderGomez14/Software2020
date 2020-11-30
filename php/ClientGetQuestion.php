@@ -1,8 +1,10 @@
+<?php if (!isset($_SESSION))
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <?php session_start() ?>
     <link rel="stylesheet" href="../styles/leaflet.css" />
     <script src="../js/leaflet.js"></script>
     <?php include '../html/Head.html' ?>
@@ -12,22 +14,9 @@
     <?php include '../php/Menus.php' ?>
     <section class="main" id="s1">
         <div>
-            <?php
-            include 'DbConfig.php';
-            if (!isset($_GET['email'])) die('Pagina restringida solo para usuarios');
-            $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
-            if (!$mysqli) {
-                echo ('MAL');
-                die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
-            }
-            $email = mysqli_real_escape_string($mysqli, $_GET['email']);
-            $query = $mysqli->query("SELECT * FROM users WHERE email ='" . $email . "' AND tipo='P'");
-            if ($query->num_rows === 0)
-                die('Area restringida solo para profesores');
-            ?>
+            <?php if (!isset($_SESSION['email']) || $_SESSION['tipo'] != 'P') die('Pagina restringida solo para profesores');  ?>
             <label>IDs para probar: Cualquiera mayor o igual que 66</label>
             <form method="get" action="">
-                <input type="text" name="email" value="<?php echo $_GET['email']; ?>" hidden>
                 <input type="text" name="id" required placeholder="ID de la pregunta">
                 <input type="submit" value="Mostrar Pregunta">
             </form>

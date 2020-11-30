@@ -1,12 +1,12 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    ?>
     <?php include '../html/Head.html' ?>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/mostrarUser.js"></script>
@@ -16,6 +16,7 @@
 <body>
     <?php include '../php/Menus.php' ?>
     <section class="main" id="s1">
+        <?php if (!isset($_SESSION['email']) || $_SESSION['tipo'] != 'W') die('Pagina restringida solo para usuarios');  ?>
         <div>
             <label id='linco3'>Elija el usuario: </label>
             <select id="usuarios" name="usuarios" onchange='valor(this.value)'>

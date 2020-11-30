@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
 <?php
 if (!isset($_SESSION)) {
   session_start();
 }
 ?>
+<!DOCTYPE html>
+<html>
 
 <head>
   <?php include '../html/Head.html' ?>

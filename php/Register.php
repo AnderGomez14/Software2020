@@ -1,8 +1,8 @@
+<?php if (!isset($_SESSION))
+    session_start(); ?>
 <html>
 
 <head>
-    <?php if (!isset($_SESSION))
-        session_start(); ?>
     <?php include '../html/Head.html' ?>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/ValidateFieldsQuestion.js"></script>

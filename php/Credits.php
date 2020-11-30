@@ -1,11 +1,11 @@
+<?php
+if (!isset($_SESSION))
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <?php
-  if (!isset($_SESSION))
-    session_start();
-  ?>
   <link rel="stylesheet" href="../styles/leaflet.css" />
   <script src="../js/leaflet.js"></script>
   <script type="text/javascript" src="https://geographiclib.sourceforge.io/scripts/geographiclib.js"></script>

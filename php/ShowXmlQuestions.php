@@ -1,3 +1,5 @@
+<?php if (!isset($_SESSION))
+    session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +12,7 @@
     <section class="main" id="s1">
         <div>
             <?php
-            if (!isset($_GET['email'])) die('Pagina restringida solo para usuarios');
+            if (!isset($_SESSION['email'])) die('Pagina restringida solo para usuarios');
             //Uso la funcion htmlspecialchars para asi evitar posibles ataques XSS. 
             //Dado que sin eso, si por ejemplo pones <script>alert(1)</script> como enunciado de la pregunta,
             //al visualizar la tabla te saldria un aviso dejando en evidencia el XSS

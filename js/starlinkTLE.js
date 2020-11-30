@@ -48,9 +48,9 @@ function parseTLE(response) {
 var speedup = 0;
 function reDrawStarlink() {
     time = new Date();
-    if (false) {
+    if (false) { //True para subir la velocidad de la simulacion
         time.setSeconds(time.getSeconds() + speedup);
-        speedup += 0;
+        speedup += 5;
     }
     if (ready) {
         var gmst = satellite.gstime(time);
