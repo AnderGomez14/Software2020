@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <?php session_start() ?>
     <link rel="stylesheet" href="../styles/leaflet.css" />
     <script src="../js/leaflet.js"></script>
     <?php include '../html/Head.html' ?>

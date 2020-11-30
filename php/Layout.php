@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+?>
 
 <head>
   <?php include '../html/Head.html' ?>

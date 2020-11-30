@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <?php if (!isset($_SESSION))
+        session_start(); ?>
     <?php include '../html/Head.html' ?>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/ValidateFieldsQuestion.js"></script>
@@ -13,16 +15,16 @@
                 $('#Registrarse').prop('disabled', false);
             }
         }
-
         setInterval(poderRegistrarse, 1000);
     </script>
-
 </head>
 
 <body>
     <?php include '../php/Menus.php' ?>
     <section class="main" id="s1">
         <div id="formDiv">
+            <?php if (isset($_SESSION['email']))
+                die('Ya estas logeado'); ?>
             <form id='register' name='fregister' enctype="multipart/form-data" action='Register.php' method="POST">
                 <table id="tform" style="margin: auto">
                     <tr>
@@ -78,7 +80,7 @@
                     echo ('Error: La contraseña ha de ser de minimo 6 caracteres');
                 } else if ($_POST['password'] != $_POST['password2']) {
                     echo ('Error: Las contraseñas no coinciden');
-                } else if (!((preg_match("/([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))/", $_POST['email']) && $_POST['tipo'] == 'A') || (preg_match("/([a-zA-Z]+(@ehu.)((eus)|(es)))/", $_POST['email']) && $_POST['tipo'] == 'P'))) {
+                } else if (!((preg_match("/([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))/", $_POST['email']) && $_POST['tipo'] == 'A') || (preg_match("/([a-zA-Z]+(@ehu.)((eus)|(es)))/", $_POST['email']) && $_POST['tipo'] == 'P')) && $_POST['email'] != 'admin@ehu.es') {
                     echo ('Error: Email incorrecto para el tipo de usuario indicado');
                 } else {
                     $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
@@ -96,9 +98,11 @@
                     #Esto lo hago porque obviamente es ilegal guardar contraseñas en plano por la ley de proteccion de datos
                     $salt = $_POST['email'] . "#Vadillo007STONKS";
                     $contraseñasegura = crypt($_POST['password'], $salt);
-
+                    $tipo = $_POST['tipo'];
+                    if ($_POST['email'] == 'admin@ehu.es')
+                        $tipo = 'W'; //W de Webmaster
                     $query = $mysqli->prepare("INSERT INTO users(tipo,email,nombre,password,foto) VALUES (?,?,?,?,?)");
-                    $query->bind_param("sssss", $_POST['tipo'], $_POST['email'], $_POST['name'], $contraseñasegura, $extension);
+                    $query->bind_param("sssss", $tipo, $_POST['email'], $_POST['name'], $contraseñasegura, $extension);
                     if (!$query->execute())
                         die('Error: No se ha podido añadir a la base de datos' . mysqli_error($mysqli));
                     if (!$_FILES["archivosubido"]["error"] != 0) {

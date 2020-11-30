@@ -11,6 +11,8 @@
     <div>
       <?php
       include 'DbConfig.php';
+      if (!isset($_SESSION['email']))
+        die('ERROR');
       //error_reporting(E_ALL ^ E_NOTICE);
       $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
       if (!$mysqli) {

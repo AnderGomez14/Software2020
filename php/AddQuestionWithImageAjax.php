@@ -1,4 +1,6 @@
 <?php
+
+
 include 'DbConfig.php';
 include 'SubirImagen.php';
 //error_reporting(E_ALL ^ E_NOTICE);

@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    ?>
     <?php include '../html/Head.html' ?>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/mostrarUser.js"></script>
@@ -31,33 +36,33 @@
             <br>
             <br>
             <br>
-            <table id='tshow' style="margin: 0px auto">
-                <tr align="left">
-                    <td><label>Email: </label></td>
-                    <td><label id='mailAux' style="color:green"></label></td>
-                </tr>
-                <tr align="left">
-                    <td><label>Contraseña: </label></td>
-                    <td><label id='passAux' style="color:green"></label></td>
-                </tr>
-                <tr align="left">
-                    <td><label>Foto: </label></td>
-                    <td><img id='fotoAux' style='max-width:60px;width:100%;max-height:60px;height:100%'></img></td>
-                </tr>
-            </table>
-            <br>
-            <br>
-            <table style="margin: 0px auto">
-                <tr align="left">
-                    <td><button id=Actividad onclick="esValido()">Estado Cuenta</button></td>
-                    <td><button id=CambiarEstado>Activar/Desactivar</button></td>
-                    <td><button id=eliminar>Eliminar Usuario</button></td>
-                </tr>
-                <tr align="left">
-                    <td><label id='estado'></label></td>
-                </tr>
-            </table>
-
+            <div id="userInfo" hidden>
+                <table id='tshow' style="margin: 0px auto">
+                    <tr align="left">
+                        <td><label>Email: </label></td>
+                        <td><label id='mailAux' style="color:green"></label></td>
+                    </tr>
+                    <tr align="left">
+                        <td><label>Contraseña: </label></td>
+                        <td><label id='passAux' style="color:green"></label></td>
+                    </tr>
+                    <tr align="left">
+                        <td><label>Foto: </label></td>
+                        <td><img id='fotoAux' style='max-width:60px;width:100%;max-height:60px;height:100%'></img> </td>
+                    </tr>
+                </table> <br>
+                <br>
+                <table style="margin: 0px auto">
+                    <tr align="left">
+                        <td><button id=Actividad onclick="esValido()">Estado Cuenta</button></td>
+                        <td><button id=CambiarEstado onclick="cambiarEstado()">Activar/Desactivar</button></td>
+                        <td><button id=eliminar onclick="eliminarUser()">Eliminar Usuario</button></td>
+                    </tr>
+                    <tr align="left">
+                        <td><label id='estado'></label></td>
+                    </tr>
+                </table>
+            </div>
 
         </div>
     </section>

@@ -2,9 +2,15 @@
 <html>
 
 <head>
+  <?php
+  if (!isset($_SESSION))
+    session_start();
+  ?>
   <link rel="stylesheet" href="../styles/leaflet.css" />
   <script src="../js/leaflet.js"></script>
   <script type="text/javascript" src="https://geographiclib.sourceforge.io/scripts/geographiclib.js"></script>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.75/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.75/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <?php include '../html/Head.html' ?>
 </head>
 

@@ -23,7 +23,7 @@
 
             foreach ($xml->children() as $pregunta) {
                 echo '<tr><td>' . htmlspecialchars($pregunta->attributes()->author) . '</td>';
-                echo '<td>' . htmlspecialchars($pregunta->children()->itemBody->children()->p) . '</td>';
+                echo '<td>' . $pregunta->children()->itemBody->children()->p . '</td>';
                 echo '<td>' . htmlspecialchars($pregunta->children()->correctResponse->children()->response) . '</td></tr>';
             }
 

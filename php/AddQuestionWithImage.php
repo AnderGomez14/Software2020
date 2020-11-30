@@ -6,6 +6,7 @@
 </head>
 
 <body>
+
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
@@ -13,6 +14,8 @@
       <?php
       include 'DbConfig.php';
       include 'SubirImagen.php';
+      if (!isset($_SESSION['email']))
+        die('ERROR');
       //error_reporting(E_ALL ^ E_NOTICE);
       $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
       if (!$mysqli) {

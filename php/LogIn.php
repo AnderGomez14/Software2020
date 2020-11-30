@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    ?>
     <?php include '../html/Head.html' ?>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/ValidateFieldsQuestion.js"></script>
@@ -12,6 +17,8 @@
     <section class="main" id="s1">
         <form id='login' name='flogin' method="POST" action='LogIn.php'>
             <div>
+                <?php if (isset($_SESSION['email']))
+                    die('Ya estas logeado'); ?>
                 <table id="tform" style="margin: 0px auto">
                     <tr>
                         <td align="left"><label id="luser">Email*: </label></td>
@@ -38,7 +45,7 @@
                     echo ('MAL');
                     die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
                 }
-                $query = $mysqli->prepare("SELECT password FROM users WHERE email = ?");
+                $query = $mysqli->prepare("SELECT `tipo`,`password`,`foto` FROM users WHERE email = ?");
                 $query->bind_param("s", $_POST['user']);
                 if ($query->execute()) {
                     $result = $query->get_result();
@@ -47,9 +54,12 @@
                     else {
                         $pass = $result->fetch_array();
                         $salt = $_POST['user'] . "#Vadillo007STONKS";
-                        if (hash_equals($pass[0], crypt($_POST['password'], $salt))) {
-                            $mail = $_POST['user'];
-                            echo "<script>alert('Inicio de sesion correcto.'); location.href='Layout.php?email=$mail'; </script>";
+                        if (hash_equals($pass[1], crypt($_POST['password'], $salt))) {
+                            $_SESSION['email'] = $_POST['user'];
+                            $_SESSION['tipo'] = $pass[0];
+                            if ($pass[2] != '-')
+                                $_SESSION['foto'] = $_POST['user'] . "." . $pass[2];
+                            echo "<script>alert('Inicio de sesion correcto.'); location.href='Layout.php'; </script>";
                             exit;
                         }
                         echo 'Inicio de sesion incorrecto';

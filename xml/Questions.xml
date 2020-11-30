@@ -1,139 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type= "text/xsl" href= "../styles/ShowXmlQuestions.xsl"?>
 <assessmentItems>
-  <assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
+  <assessmentItem subject="Tonto el que lo lea" author="agomez302@ikasle.ehu.eus">
     <itemBody>
-      <p>Tag HTML para añadir un formulario</p>
+      <p>Quien es mi compañero?</p>
     </itemBody>
     <correctResponse>
-      <response>
-				FORM
-      </response>
+      <response>Mikel</response>
     </correctResponse>
     <incorrectResponses>
-      <response> OBJECT </response>
-      <response> TABLE </response>
-      <response> DIV </response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
-    <itemBody>
-      <p>Este protocolo acabará funcionando
-			incluso entre dos latas unidas por un cordón</p>
-    </itemBody>
-    <correctResponse>
-      <response>
-				TCP/IP
-      </response>
-    </correctResponse>
-    <incorrectResponses>
-      <response> HTTP </response>
-      <response> SMTP </response>
-      <response> Ninguna es correcta </response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="Desarrollo sostenible" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>¿Qué sector ha tenido un mayor porcentaje de robotización y, por ende, la mayor pérdida de empleo?</p>
-    </itemBody>
-    <correctResponse>
-      <response>Gestion</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>Construccion</response>
-      <response>Informatica</response>
-      <response>Facebook</response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="sadsasad" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>ddsfgfgdsgf</p>
-    </itemBody>
-    <correctResponse>
-      <response>asd</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>asdf</response>
-      <response>fsa</response>
-      <response>afs</response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="sadsasad" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>ddsfgfgdsgf</p>
-    </itemBody>
-    <correctResponse>
-      <response>asd</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>asdf</response>
-      <response>fsa</response>
-      <response>afs</response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="sadsasad" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>ddsfgfgdsgf</p>
-    </itemBody>
-    <correctResponse>
-      <response>asd</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>asdf</response>
-      <response>fsa</response>
-      <response>afs</response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="sadsasad" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>ddsfgfgdsgf</p>
-    </itemBody>
-    <correctResponse>
-      <response>asd</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>asdf</response>
-      <response>fsa</response>
-      <response>afs</response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="sadsasad" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>afsasfasfasf</p>
-    </itemBody>
-    <correctResponse>
-      <response>asd</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>asdf</response>
-      <response>fsa</response>
-      <response>afs</response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="sadsasad" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>ddsfgfgdsgf</p>
-    </itemBody>
-    <correctResponse>
-      <response>asd</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>asdf</response>
-      <response>fsa</response>
-      <response>afs</response>
-    </incorrectResponses>
-  </assessmentItem>
-  <assessmentItem subject="sadsasad" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>ddsfgfgdsgf</p>
-    </itemBody>
-    <correctResponse>
-      <response>asd</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>asdf</response>
-      <response>fsa</response>
-      <response>afs</response>
+      <response>Markel</response>
+      <response>Yo mismo </response>
+      <response>Vadillo</response>
     </incorrectResponses>
   </assessmentItem>
 </assessmentItems>
