@@ -13,6 +13,7 @@ while ($row = mysqli_fetch_array($user)) {
     $json->nEmail = $row['email'];
     $json->nPassword = $row['password'];
     $json->nUsers = $row['foto'];
+    $json->nEstado = $row['estado'];
     header('Content-Type: application/json');
     echo json_encode($json);
 }
