@@ -45,7 +45,7 @@ if (!isset($_SESSION)) {
                     echo ('MAL');
                     die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
                 }
-                $query = $mysqli->prepare("SELECT `tipo`,`password`,`foto` FROM users WHERE email = ?");
+                $query = $mysqli->prepare("SELECT `tipo`,`password`,`foto`,`estado` FROM users WHERE email = ?");
                 $query->bind_param("s", $_POST['user']);
                 if ($query->execute()) {
                     $result = $query->get_result();
@@ -53,14 +53,18 @@ if (!isset($_SESSION)) {
                         echo 'Inicio de sesion incorrecto';
                     else {
                         $pass = $result->fetch_array();
-                        $salt = $_POST['user'] . "#Vadillo007STONKS";
-                        if (hash_equals($pass[1], crypt($_POST['password'], $salt))) {
-                            $_SESSION['email'] = $_POST['user'];
-                            $_SESSION['tipo'] = $pass[0];
-                            if ($pass[2] != '-')
-                                $_SESSION['foto'] = $_POST['user'] . "." . $pass[2];
-                            echo "<script>alert('Inicio de sesion correcto.'); location.href='Layout.php'; </script>";
-                            exit;
+                        if ($pass[3] == 'B')
+                            echo 'Usuario bloqueado';
+                        else {
+                            $salt = $_POST['user'] . "#Vadillo007STONKS";
+                            if (hash_equals($pass[1], crypt($_POST['password'], $salt))) {
+                                $_SESSION['email'] = $_POST['user'];
+                                $_SESSION['tipo'] = $pass[0];
+                                if ($pass[2] != '-')
+                                    $_SESSION['foto'] = $_POST['user'] . "." . $pass[2];
+                                echo "<script>alert('Inicio de sesion correcto.'); location.href='Layout.php'; </script>";
+                                exit;
+                            }
                         }
                         echo 'Inicio de sesion incorrecto';
                     }
