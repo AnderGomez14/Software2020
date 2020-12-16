@@ -10,6 +10,9 @@ if (!isset($_SESSION)) {
     <?php include '../html/Head.html' ?>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/ValidateFieldsQuestion.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="183147629418-40gufv0teip26kaqqq8m5qh2or923duu.apps.googleusercontent.com">
+
 </head>
 
 <body>
@@ -31,9 +34,11 @@ if (!isset($_SESSION)) {
                 </table>
 
             </div>
+            <a href="RecuperarPassword.php">Se me ha olvidado la contraseña</a><br>
             <input type="submit" value="Iniciar Sesion"><br><br>
 
         </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <?php
         include 'DbConfig.php';
         if (isset($_POST['user'])) {
