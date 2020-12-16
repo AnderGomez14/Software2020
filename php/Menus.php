@@ -13,9 +13,13 @@
         echo ('MAL');
         die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
       }
-      $foto = "../uploads/nophoto.jpg";
-      if (isset($_SESSION['foto']))
-        $foto = "../uploads/" . $_SESSION['foto'];
+      if (isset($_SESSION['social']))
+        $foto = $_SESSION['foto'];
+      else {
+        $foto = "../uploads/nophoto.jpg";
+        if (isset($_SESSION['foto']))
+          $foto = "../uploads/" . $_SESSION['foto'];
+      }
       $mail = $_SESSION['email'];
       echo $mail;
       echo ' <img src="';

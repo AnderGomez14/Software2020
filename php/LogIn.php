@@ -1,6 +1,7 @@
 <?php
 if (!isset($_SESSION)) {
     session_start();
+    require('../vendor/steamauth/steamauth.php');
 }
 ?>
 <!DOCTYPE html>
@@ -39,6 +40,34 @@ if (!isset($_SESSION)) {
 
         </form>
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <script>
+            var google;
+
+            function onSignIn(googleUser) {
+
+                var id_token = googleUser.getAuthResponse().id_token;
+                $.post('LoginWithGoogle.php', {
+                    idtoken: id_token
+                }).done(function(response) {
+                    location.href = 'Layout.php';
+                });
+            }
+        </script>
+        <?php
+        if (!isset($_SESSION['steamid'])) {
+
+            loginbutton(); //login button
+
+        } else {
+            include('../vendor/steamauth/userInfo.php');
+
+            $_SESSION['email'] = $steamprofile['personaname'] . "@steam.com";
+            $_SESSION['tipo'] = 'A';
+            $_SESSION['foto'] = $steamprofile['avatarfull'];
+            $_SESSION['social'] = true;
+            echo "<script>location.href='Layout.php'; </script>";
+        }
+        ?>
         <?php
         include 'DbConfig.php';
         if (isset($_POST['user'])) {
