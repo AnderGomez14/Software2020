@@ -14,4 +14,56 @@
       <response>Vadillo</response>
     </incorrectResponses>
   </assessmentItem>
+  <assessmentItem subject="F1" author="KimAnguilaUnTS13@steam.com">
+    <itemBody>
+      <p>¿Quien va a ser el compañero de Max Verstappen en 2021?</p>
+    </itemBody>
+    <correctResponse>
+      <response>Sergio Perez</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response>Charles Leclerc</response>
+      <response>Ander Gómez</response>
+      <response>Carlos Sainz</response>
+    </incorrectResponses>
+  </assessmentItem>
+  <assessmentItem subject="F1" author="KimAnguilaUnTS13@steam.com">
+    <itemBody>
+      <p>¿Que equipo ha quedado P3 en el mundial de contructores del 2020?</p>
+    </itemBody>
+    <correctResponse>
+      <response>McLaren</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response>Ferrari</response>
+      <response>Racing Point</response>
+      <response>HRT</response>
+    </incorrectResponses>
+  </assessmentItem>
+  <assessmentItem subject="F1" author="KimAnguilaUnTS13@steam.com">
+    <itemBody>
+      <p>¿Que equipo ha quedado P6 en el mundial de contructores del 2020?</p>
+    </itemBody>
+    <correctResponse>
+      <response>McLaren</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response>Ferrari</response>
+      <response>Racing Point</response>
+      <response>HRT</response>
+    </incorrectResponses>
+  </assessmentItem>
+  <assessmentItem subject="F1" author="KimAnguilaUnTS13@steam.com">
+    <itemBody>
+      <p>¿Que famoso santo apareció en China 2007?</p>
+    </itemBody>
+    <correctResponse>
+      <response>Sanganchao</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response>Santo Tomas</response>
+      <response>San Miguel</response>
+      <response>Senna</response>
+    </incorrectResponses>
+  </assessmentItem>
 </assessmentItems>

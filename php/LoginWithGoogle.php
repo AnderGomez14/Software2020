@@ -12,7 +12,7 @@ $redirectUri = 'localhost/MikelGarcia-AnderGomez/php/LoginWithGoogle.php';
 // create Client Request to access Google API
 
 
-$client = new Google_Client(['client_id' => $clientID]);  // Specify the CLIENT_ID of the app that accesses the backend
+$client = new Google_Client(['client_id' => $clientID]);
 $payload = $client->verifyIdToken($_POST['idtoken']);
 if ($payload) {
     $json = file_get_contents("https://oauth2.googleapis.com/tokeninfo?id_token=" . $_POST['idtoken']);

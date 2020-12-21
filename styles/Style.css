@@ -31,3 +31,43 @@ nav span             				{ margin: 0px 10px 0px 0px;
 	padding: 20px;
 
 }
+
+.quizButton{
+	background-color: #292ce9;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	min-width:100%;
+	min-height:100%;
+}
+.quizTable{
+	min-width:80%;
+	  margin-left: auto;
+	  margin-right: auto;
+}
+
+.score{
+	border-style: solid;
+	border-width : 5px;
+	background-color: #292ce9;
+	color: white;
+	text-align: center;
+	border-color: yellow;
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+
+}
+.g-signin2 {
+	width: 100%;
+}
+
+.g-signin2>div {
+	margin: 0 auto;
+}

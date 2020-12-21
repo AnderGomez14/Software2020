@@ -9,9 +9,9 @@ if (!$mysqli) {
   echo ('MAL');
   die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
 }
-if (empty($_POST['mail']) || empty($_POST['enum']) || empty($_POST['correcta']) || empty($_POST['inco1']) || empty($_POST['inco2']) || empty($_POST['inco3']) || empty($_POST['complejidad']) || empty($_POST['tema'])) {
+if (empty($_POST['mail']) || empty($_POST['enum']) || empty($_POST['correcta']) || empty($_POST['inco1']) || empty($_POST['inco2']) || empty($_POST['inco3']) || empty($_POST['complejidad']) || empty($_POST['tema']) || $_FILES['archivosubido']['name'] == "") {
   echo ('Error: Faltan parametros');
-} else if (!(preg_match("/([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+[0-9]{3}(@ikasle.ehu.)((eus)|(es)))|([a-zA-Z]+(@ehu.)((eus)|(es)))/", $_POST['mail']) && strlen($_POST['enum']) >= 10 && $_POST['complejidad'] >= 1 && $_POST['complejidad'] <= 3)) {
+} else if (!(strlen($_POST['enum']) >= 10 && $_POST['complejidad'] >= 1 && $_POST['complejidad'] <= 3)) {
   echo ('Error: Datos incorrectos. <br>gg nice try. Esfuerzate mas para hackearme');
   echo '<br> <img src="https://pbs.twimg.com/media/EiEMspkX0AMfWG8.jpg" style="max-width:300px;width:100%"></img> <br>';
 } else {

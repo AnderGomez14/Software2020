@@ -18,7 +18,14 @@ if (!isset($_SESSION)) {
       <h2>Quiz: el juego de las preguntas</h2>
       <br>
       <img src="https://i.imgur.com/xdT6gxU.gif">
-
+      <?php
+      $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
+      if (!$mysqli) {
+        echo ('MAL');
+        die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
+      }
+      $query = $mysqli->query("SELECT * FROM ranking");
+      ?>
     </div>
   </section>
   <?php include '../html/Footer.html' ?>

@@ -39,7 +39,7 @@ if (!isset($_SESSION)) {
             <input type="submit" value="Iniciar Sesion"><br><br>
 
         </form>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <div class="g-signin2" data-onsuccess="onSignIn" style="margin-left: auto;margin-right: auto;"></div>
         <script>
             var google;
 
