@@ -52,7 +52,7 @@ if (!isset($_SESSION)) {
                         $codigo = random_bytes(16);
                         $codigo = bin2hex($codigo);
                         // El mensaje
-                        $mensaje = "Hemos recibido una solicitud para restablecer la contraseña.\r\n Si no has sido tú quien ha enviado la solicitud, ignora este mensaje. Si has sido tú, puedes restablecer la contraseña a través de este enlace:\r\n\r\n <a href='https://andergo14.000webhostapp.com/MikelGarcia-AnderGomez/php/ResetearPassword.php?key=" . $codigo . "'>https://andergo14.000webhostapp.com/MikelGarcia-AnderGomez/php/ResetearPassword.php?key=" . $codigo . "</a>\r\n";
+                        $mensaje = "Hemos recibido una solicitud para restablecer la contraseña.\r\n Si no has sido tú quien ha enviado la solicitud, ignora este mensaje. Si has sido tú, puedes restablecer la contraseña a través de este enlace:\r\n\r\n <a href='https://andergo14.000webhostapp.com/swfinal/php/ResetearPassword.php?key=" . $codigo . "'>https://andergo14.000webhostapp.com/swfinal/php/ResetearPassword.php?key=" . $codigo . "</a>\r\n";
                         $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
                         $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                         // Enviarlo

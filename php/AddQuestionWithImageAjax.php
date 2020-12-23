@@ -1,6 +1,6 @@
 <?php
-
-
+if (!isset($_SESSION))
+  session_start();
 include 'DbConfig.php';
 include 'SubirImagen.php';
 //error_reporting(E_ALL ^ E_NOTICE);
@@ -9,8 +9,10 @@ if (!$mysqli) {
   echo ('MAL');
   die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
 }
-if (empty($_POST['mail']) || empty($_POST['enum']) || empty($_POST['correcta']) || empty($_POST['inco1']) || empty($_POST['inco2']) || empty($_POST['inco3']) || empty($_POST['complejidad']) || empty($_POST['tema']) || $_FILES['archivosubido']['name'] == "") {
+if (empty($_SESSION['email']) || empty($_POST['enum']) || empty($_POST['correcta']) || empty($_POST['inco1']) || empty($_POST['inco2']) || empty($_POST['inco3']) || empty($_POST['complejidad']) || empty($_POST['tema']) || $_FILES['archivosubido']['name'] == "") {
   echo ('Error: Faltan parametros');
+} elseif ($_SESSION['tipo'] == 'W') {
+  echo ('Error: No tienes permisos.');
 } else if (!(strlen($_POST['enum']) >= 10 && $_POST['complejidad'] >= 1 && $_POST['complejidad'] <= 3)) {
   echo ('Error: Datos incorrectos. <br>gg nice try. Esfuerzate mas para hackearme');
   echo '<br> <img src="https://pbs.twimg.com/media/EiEMspkX0AMfWG8.jpg" style="max-width:300px;width:100%"></img> <br>';
@@ -18,7 +20,7 @@ if (empty($_POST['mail']) || empty($_POST['enum']) || empty($_POST['correcta']) 
   $tipo = strtolower(pathinfo(basename($_FILES["archivosubido"]["name"]), PATHINFO_EXTENSION));
 
   $query = $mysqli->prepare("INSERT INTO preguntas_imagen(mail,enum,correcta,inco1,inco2,inco3,complejidad,tema,foto) VALUES (?,?,?,?,?,?,?,?,?)");
-  $query->bind_param("ssssssiss", $_POST['mail'], $_POST['enum'], $_POST['correcta'], $_POST['inco1'], $_POST['inco2'], $_POST['inco3'], $_POST['complejidad'], $_POST['tema'], $tipo);
+  $query->bind_param("ssssssiss", $_SESSION['email'], $_POST['enum'], $_POST['correcta'], $_POST['inco1'], $_POST['inco2'], $_POST['inco3'], $_POST['complejidad'], $_POST['tema'], $tipo);
   //Esto lo he hecho asi para evitar ataques de SQL Injection
   if (!$query->execute())
     die('Error: No se ha podido añadir a la base de datos' . mysqli_error($mysqli));
@@ -32,7 +34,7 @@ if (empty($_POST['mail']) || empty($_POST['enum']) || empty($_POST['correcta']) 
   $assessmentItem = $xml->addChild('assessmentItem');
 
   $assessmentItem->addAttribute('subject', $_POST['tema']);
-  $assessmentItem->addAttribute('author', $_POST['mail']);
+  $assessmentItem->addAttribute('author', $_SESSION['email']);
   //$assessmentItem->addAttribute('photo', "../uploads/" . $id . "." . $tipo); Esto esta por si hay que añadir tambien la ruta a la imagen
 
 

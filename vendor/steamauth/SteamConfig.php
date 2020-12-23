@@ -1,7 +1,7 @@
 <?php
 //Version 3.2
 $steamauth['apikey'] = "B97B676AAD093E665301192A574AD58D"; // Your Steam WebAPI-Key found at https://steamcommunity.com/dev/apikey
-$steamauth['domainname'] = ""; // The main URL of your website displayed in the login page
+$steamauth['domainname'] = "andergo14.000webhostapp.com/"; // The main URL of your website displayed in the login page
 $steamauth['logoutpage'] = "../php/logout.php"; // Page to redirect to after a successfull logout (from the directory the SteamAuth-folder is located in) - NO slash at the beginning!
 $steamauth['loginpage'] = "../php/LogIn.php"; // Page to redirect to after a successfull login (from the directory the SteamAuth-folder is located in) - NO slash at the beginning!
 

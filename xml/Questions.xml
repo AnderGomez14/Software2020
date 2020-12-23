@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type= "text/xsl" href= "../styles/ShowXmlQuestions.xsl"?>
 <assessmentItems>
-  <assessmentItem subject="Tonto el que lo lea" author="agomez302@ikasle.ehu.eus">
-    <itemBody>
-      <p>Quien es mi compañero?</p>
-    </itemBody>
-    <correctResponse>
-      <response>Mikel</response>
-    </correctResponse>
-    <incorrectResponses>
-      <response>Markel</response>
-      <response>Yo mismo </response>
-      <response>Vadillo</response>
-    </incorrectResponses>
-  </assessmentItem>
   <assessmentItem subject="F1" author="KimAnguilaUnTS13@steam.com">
     <itemBody>
       <p>¿Quien va a ser el compañero de Max Verstappen en 2021?</p>
@@ -64,6 +51,19 @@
       <response>Santo Tomas</response>
       <response>San Miguel</response>
       <response>Senna</response>
+    </incorrectResponses>
+  </assessmentItem>
+  <assessmentItem subject="F1" author="anderelmejor10@gmail.com">
+    <itemBody>
+      <p>¿Quien es el campeon de F1 del 2016?</p>
+    </itemBody>
+    <correctResponse>
+      <response>Nico Rosberg</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response>Fernando Alonso</response>
+      <response>Lewis Hamilton</response>
+      <response>Antonio Lobato</response>
     </incorrectResponses>
   </assessmentItem>
 </assessmentItems>

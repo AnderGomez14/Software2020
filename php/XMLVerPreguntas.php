@@ -5,9 +5,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
-
-if (isset($_SESSION['email'])) {
+if (isset($_SESSION['email']) && $_SESSION['tipo'] != 'W') {
     echo '<table id="tshow" style="margin: 0px auto" border=1> <tr> <th> Autor </th> <th> Enunciado </th> <th> Respuesta correcta </th> </tr>';
 
     foreach ($xml->children() as $pregunta) {

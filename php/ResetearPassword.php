@@ -74,7 +74,7 @@ if (!isset($_SESSION)) {
                 $contraseñasegura = crypt($_POST['password'], $salt);
                 $query = mysqli_query($mysqli, "UPDATE users SET password = '" . $contraseñasegura . "', reset = NULL WHERE email = '" . $email . "'");
                 mysqli_close($mysqli);
-                echo '<script>alert("Contraseña cambiada con exito");window.location.href = "' . $url . '/MikelGarcia-AnderGomez/php/LogIn.php";</script>';
+                echo '<script>alert("Contraseña cambiada con exito");window.location.href = "' . $url . 'php/LogIn.php";</script>';
             }
         }
         ?>

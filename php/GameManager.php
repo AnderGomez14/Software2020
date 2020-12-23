@@ -7,7 +7,7 @@ if (!isset($_GET['action'])) {
     die("Something went wrong!");
 } else {
     if ($_GET['action'] == "comenzar") {
-        if (!isset($_POST['tema']) || empty($_POST['tema'])) {
+        if (!isset($_POST['tema'])) {
             error(4);
         } elseif (isset($_SESSION['gameSession'])) {
             error(6);
@@ -35,7 +35,7 @@ if (!isset($_GET['action'])) {
             }
         } elseif ($_GET['action'] == "feedback") {
             if (!isset($_POST['valoracion']))
-                die("ERROR: Falta el parametro valoracion");
+                error(7);
             else {
                 if ($_SESSION['gameSession']->feedback($_POST['valoracion']))
                     echo "OK";
@@ -49,9 +49,6 @@ if (!isset($_GET['action'])) {
             } else {
                 showQuestion($question);
             }
-        } elseif ($_GET['action'] == "reset") {
-            unset($_SESSION['gameSession']);
-            echo '<script>window.location.href = "play.php";</script>';
         } elseif ($_GET['action'] == "abandonar") {
             pantallaFinal();
         } elseif ($_GET['action'] == "subirResultados") {
@@ -69,11 +66,15 @@ if (!isset($_GET['action'])) {
         }
     }
 }
-
+/**
+ * Esta funcion devolvera el codigo HTML de la pagina de una pregunta
+ * 
+ * Toma como argumento question, que sera un array con los datos de la pregunta
+ */
 function showQuestion($question)
 {
-    echo '<div id="score" class="score">Aciertos: <label id="aciertos">' . $question['aciertos'] . '</label> | Fallos: <label id="fallos">' . $question['fallos'] . '</label> | Tema: ' . $question['tema'] . ' | Pregunta: ' . $question['nPregunta'] . ' | Valoracion: <label id="likes">' . $question['likes'] . '</label> Me gusta / <label id="dislikes">' . $question['dislikes'] . '</label> No me gusta</div>';
-    echo "<br><h1>" . $question['enum'] . "</h1>";
+    echo '<div id="score" class="score">Aciertos: <label id="aciertos">' . $question['aciertos'] . '</label> | Fallos: <label id="fallos">' . $question['fallos'] . '</label> | Tema: ' . htmlspecialchars($question['tema']) . ' | Pregunta: ' . $question['nPregunta'] . ' | Valoracion: <label id="likes">' . $question['likes'] . '</label> Me gusta / <label id="dislikes">' . $question['dislikes'] . '</label> No me gusta</div>';
+    echo "<br><h1>" . htmlspecialchars($question['enum']) . "</h1>";
     $complejidad = "";
     if ($question['complejidad'] = '1')
         $complejidad = "Baja";
@@ -86,18 +87,18 @@ function showQuestion($question)
     echo '<table class="quizTable">
                 <tr>
                     <td>
-                        <button id="button0" class="quizButton" onclick="clickButton(this)" value="0">' . $question['respuestas'][0] . '</button>
+                        <button id="button0" class="quizButton" onclick="clickButton(this)" value="0">' . htmlspecialchars($question['respuestas'][0]) . '</button>
                     </td>
                     <td>
-                        <button id="button1" class="quizButton" onclick="clickButton(this)" value="1">' . $question['respuestas'][1] . '</button>
+                        <button id="button1" class="quizButton" onclick="clickButton(this)" value="1">' . htmlspecialchars($question['respuestas'][1]) . '</button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button id="button2" class="quizButton" onclick="clickButton(this)" value="2">' . $question['respuestas'][2] . '</button>
+                        <button id="button2" class="quizButton" onclick="clickButton(this)" value="2">' . htmlspecialchars($question['respuestas'][2]) . '</button>
                     </td>
                     <td>
-                        <button id="button3" class="quizButton" onclick="clickButton(this)" value="3">' . $question['respuestas'][3] . '</button>
+                        <button id="button3" class="quizButton" onclick="clickButton(this)" value="3">' . htmlspecialchars($question['respuestas'][3]) . '</button>
                     </td>
                 </tr>
             </table><br>';
@@ -123,6 +124,9 @@ function showQuestion($question)
  }</script>";
 }
 
+/**
+ * Esta funcion devolvera el codigo HTML de la pagina de resultados
+ */
 function pantallaFinal()
 {
     $resultados = $_SESSION['gameSession']->results();
@@ -134,7 +138,7 @@ function pantallaFinal()
             <label for="nickName">Apodo: </label>
             <input type="text" id="nickName" /><br><br>
             <button onclick="subirResultado()">Subir resultado a la tabla</button>
-            <button onclick="reset()">Volver al comienzo</button>';
+            <button onclick="window.location.href = \'play.php\';">Volver al comienzo</button>';
 }
 
 function error($id)
@@ -154,6 +158,14 @@ function error($id)
         die("ERROR: Falta el parametro Respuesta o no es valido");
     } elseif ($id == 6) {
         die("ERROR: Ya has iniciado el juego");
+    } elseif ($id == 7) {
+        die("ERROR: Falta el parametro valoracion");
+    } elseif ($id == 8) {
+        die("ERROR: Tema no valido");
+    } elseif ($id == 9) {
+        die("ERROR: No se puede subir los resultados");
+    } elseif ($id == 10) {
+        die("ERROR: No has acabado todavia");
     } else {
         die("ERROR: Error desconocido");
     }

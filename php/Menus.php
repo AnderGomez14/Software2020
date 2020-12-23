@@ -36,7 +36,7 @@
     <?php
     include 'DbConfig.php';
     if (!isset($_SESSION['email'])) echo "<span><a href='Layout.php'>Inicio</a></span>
-    <span><a href='Credits.php'>Creditos</a></span>";
+    <span><a href='Credits.php'>Creditos</a></span><span><a href='Play.php'>A Jugar!</a></span>";
     else {
       echo "<span><a href='Layout.php'>Inicio</a></span>";
       if ($_SESSION['tipo'] == 'W')

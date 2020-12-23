@@ -101,8 +101,18 @@
                     $tipo = $_POST['tipo'];
                     if ($_POST['email'] == 'admin@ehu.es')
                         $tipo = 'W'; //W de Webmaster
-                    $query = $mysqli->prepare("INSERT INTO users(tipo,email,nombre,password,foto) VALUES (?,?,?,?,?)");
-                    $query->bind_param("sssss", $tipo, $_POST['email'], $_POST['name'], $contraseñasegura, $extension);
+                    $codigo = random_bytes(16);
+                    $codigo = bin2hex($codigo);
+                    $query = $mysqli->prepare("INSERT INTO users(tipo,email,nombre,password,foto,regCheck) VALUES (?,?,?,?,?,?)");
+                    $query->bind_param(
+                        "ssssss",
+                        $tipo,
+                        $_POST['email'],
+                        $_POST['name'],
+                        $contraseñasegura,
+                        $extension,
+                        $codigo
+                    );
                     if (!$query->execute())
                         die('Error: No se ha podido añadir a la base de datos' . mysqli_error($mysqli));
                     if (!$_FILES["archivosubido"]["error"] != 0) {
@@ -112,7 +122,14 @@
                             die();
                         }
                     }
-                    echo '<script>alert("Usuario creado satisfactoriamente.");window.location.href = "LogIn.php";</script>';
+                    $mensaje = "QUIZ<br>Buenas, " . $_POST['name'] . ".<br>Se ha registrado un usuario con este correo, para verificar el correo, entre en el siguiente enlace  <a style='color:blue' href='" . $url . "php/VerificarCuenta.php?cod=" . $codigo . "'>Verificar</a>";
+                    $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+                    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                    if (mail($_POST['email'], 'Verificar cuenta QUIZ', $mensaje, $cabeceras)) {
+                        echo " Se ha enviado un email para verificar el correo.<br>";
+                        echo "Si no llega tu mensaje o no quieres esperar a que llegue, haz click <a style='color:blue' href='" . $url . "php/VerificarCuenta.php?cod=" . $codigo . "'>aquí</a> para verificar tu correo.";
+                    } //Con este comando mandariamos el correo
+                    echo "<br><br>";
                 }
             }
             ?>

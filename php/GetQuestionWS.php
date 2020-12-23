@@ -4,7 +4,7 @@ require_once('DbConfig.php');
 require_once('../lib/nusoap.php');
 require_once('../lib/class.wsdlcache.php');
 
-$ns = $url . "MikelGarcia-AnderGomez/php/GetQuestionWS.php";
+$ns = $url . "php/GetQuestionWS.php";
 $server = new soap_server();
 $server->configureWSDL('ObtenerPregunta', $ns);
 $server->wsdl->schemaTargetNamespace = $ns;

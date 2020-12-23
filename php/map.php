@@ -28,6 +28,8 @@
     window.setInterval(function() {
         reDrawStarlink();
     }, 50);
+
+    viewer.clock.shouldAnimate = true;
 </script>
 
 </html>

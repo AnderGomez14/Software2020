@@ -35,10 +35,10 @@ if (!isset($_SESSION)) {
                 </table>
 
             </div>
-            <a href="RecuperarPassword.php">Se me ha olvidado la contraseña</a><br>
+            <a href="RecuperarPassword.php">Se me ha olvidado la contraseña</a><br><br>
             <input type="submit" value="Iniciar Sesion"><br><br>
 
-        </form>
+        </form><br>
         <div class="g-signin2" data-onsuccess="onSignIn" style="margin-left: auto;margin-right: auto;"></div>
         <script>
             var google;
@@ -49,14 +49,19 @@ if (!isset($_SESSION)) {
                 $.post('LoginWithGoogle.php', {
                     idtoken: id_token
                 }).done(function(response) {
+                    auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function() {
+                        auth2.disconnect();
+                    });
                     location.href = 'Layout.php';
                 });
             }
         </script>
+
         <?php
         if (!isset($_SESSION['steamid'])) {
 
-            loginbutton(); //login button
+            //loginbutton(); Esta funcion muestra el boton para inicar sesion por Steam.
 
         } else {
             include('../vendor/steamauth/userInfo.php');
@@ -88,7 +93,7 @@ if (!isset($_SESSION)) {
                     else {
                         $pass = $result->fetch_array();
                         if ($pass[3] == 'B')
-                            echo 'Usuario bloqueado';
+                            echo 'Usuario bloqueado o no verificado. ';
                         else {
                             $salt = $_POST['user'] . "#Vadillo007STONKS";
                             if (hash_equals($pass[1], crypt($_POST['password'], $salt))) {

@@ -46,12 +46,13 @@ function parseTLE(response) {
 }
 
 var speedup = 0;
-function reDrawStarlink() {
+function reDrawStarlink() {/*
     time = new Date();
     if (false) { //True para subir la velocidad de la simulacion
         time.setSeconds(time.getSeconds() + speedup);
         speedup += 5;
-    }
+    }*/
+    time = Cesium.JulianDate.toDate(viewer.clock.currentTime);
     if (ready) {
         var gmst = satellite.gstime(time);
         for (var i = 0; i < starlink.length; i++) {

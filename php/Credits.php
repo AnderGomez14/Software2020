@@ -50,6 +50,7 @@ if (!isset($_SESSION))
       echo '<div id="coordServer" hidden>' . $servidor->loc . '</div>';
 
       ?><br>
+      <a href="map.php">Enlace al mapa 3D</a><br>
       <div id="cargando"><img src="https://thumbs.gfycat.com/TemptingOptimisticAlbacoretuna-size_restricted.gif"></img></div>
       <div id="starlinkdiv">
         <h>ESTADISTICAS STARLINK </h><br>

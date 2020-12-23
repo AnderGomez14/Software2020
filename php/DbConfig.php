@@ -5,13 +5,13 @@ if ($local == 1) {
     $user = "root";
     $pass = "";
     $basededatos = "quiz";
-    $target_dir = "/xampp/htdocs/MikelGarcia-AnderGomez/";
-    $url = "http://localhost/";
+    $target_dir = getcwd() . "/../";
+    $url = "http://localhost/MikelGarcia-AnderGomez/mikelgarcia-andergomez/";
 } else {
     $server = "localhost";
     $user = "id15505880_miusuario";
     $pass = "KTYT%HAB6X3ZFp]w";
     $basededatos = "id15505880_dbquiz";
-    $target_dir = "/storage/ssd5/880/15505880/public_html/MikelGarcia-AnderGomez/";
-    $url = "https://andergo14.000webhostapp.com/";
+    $target_dir = getcwd() . "/../";;
+    $url = "https://andergo14.000webhostapp.com/swfinal/";
 }

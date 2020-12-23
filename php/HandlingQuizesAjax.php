@@ -25,13 +25,10 @@ if (!isset($_SESSION)) {
         <div id="liveQuestions">Preguntas actualmente en la DB: <div id="nQuestions">
             </div>
         </div>
+        <input id="mail" value="<?php echo $_SESSION['email']; ?>" hidden>
         <div id="formDiv">
             <form id='fquestion'>
                 <table id="tform" style="margin: 0px auto">
-                    <tr hidden>
-                        <td align="left"><label id="lmail">Email*: </label></td>
-                        <td><input type="text" id="mail" name="mail" value="<?php echo $_SESSION['email']; ?>"></td>
-                    </tr>
                     <tr>
                         <td align="left"><label id='lenunciado'>Enunciado de la pregunta:* </label></td>
                         <td><input type="text" id="enum" name="enum"></td>

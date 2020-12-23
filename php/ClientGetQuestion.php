@@ -23,7 +23,7 @@
             <?php
             require_once('../lib/nusoap.php');
             require_once('../lib/class.wsdlcache.php');
-            $soapclient = new nusoap_client($url . 'MikelGarcia-AnderGomez/php/GetQuestionWS.php?wsdl', true);
+            $soapclient = new nusoap_client($url . '/php/GetQuestionWS.php?wsdl', true);
             if (isset($_GET['id'])) {
                 $respuesta =  $soapclient->call('ObtenerPregunta', array('x' => $_GET['id']));
                 if ($respuesta['enunciado'] == "")
