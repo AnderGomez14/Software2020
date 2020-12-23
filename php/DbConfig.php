@@ -6,7 +6,7 @@ if ($local == 1) {
     $pass = "";
     $basededatos = "quiz";
     $target_dir = getcwd() . "/../";
-    $url = "http://localhost/MikelGarcia-AnderGomez/mikelgarcia-andergomez/";
+    $url = "http://localhost/MikelGarcia-AnderGomez/";
 } else {
     $server = "localhost";
     $user = "id15505880_miusuario";

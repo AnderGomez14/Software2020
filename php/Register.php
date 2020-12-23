@@ -117,7 +117,7 @@
                         die('Error: No se ha podido añadir a la base de datos' . mysqli_error($mysqli));
                     if (!$_FILES["archivosubido"]["error"] != 0) {
                         if (!subir($_FILES, $target_dir, $_POST['email'])) {
-                            $email = $_POST['email'];
+                            $email = mysqli_real_escape_string($mysqli, $_POST['email']);
                             mysqli_query($mysqli, "DELETE FROM users WHERE email = '$email'");
                             die();
                         }
